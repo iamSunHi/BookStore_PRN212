@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Category>
+
+<div class="card shadow border-0 mt-4">
+	<div class="card-header bg-dark bg-gradient m-lg-0 py-3">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h2 class="text-white py-2">Category List</h2>
+			</div>
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="row d-flex align-items-center pb-3">
+			<div class="text-end">
+				<a class="btn btn-primary" asp-action="Create">
+					New Category
+					<i class="bi bi-plus-circle"></i>
+				</a>
+			</div>
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>
+						Category Name
+					</th>
+					<th>
+						Display Order
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model.OrderBy(item => item.DisplayOrder))
+				{
+					<tr>
+						<td>@item.Name</td>
+						<td>@item.DisplayOrder</td>
+						<td>
+							<div class="btn-group d-flex" role="group">
+								<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-2">
+									Edit <i class="bi bi-pencil-square"></i>
+								</a>
+								<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2">
+									Delete <i class="bi bi-trash-fill"></i>
+								</a>
+							</div>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
