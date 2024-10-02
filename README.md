@@ -1,5 +1,3 @@
-# This is just a mini project to learn ASP.NET Core MVC when I was a beginner.
-
 Secret:
 {
   "ConnectionStrings": {
