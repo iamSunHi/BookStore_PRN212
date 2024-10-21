@@ -18,7 +18,7 @@
         <materialDesign:Card Margin="10" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel>
                 <TextBlock Text="Welcome to Bulky Book" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-                <Button Content="Login" Margin="10" HorizontalAlignment="Center" Click="Button_Click"/>
+                <Button x:Name="btnLogin" Content="Login" Margin="10" HorizontalAlignment="Center"/>
             </StackPanel>
         </materialDesign:Card>
     </Grid>
