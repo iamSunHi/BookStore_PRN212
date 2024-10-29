@@ -29,15 +29,13 @@ namespace BulkyBook
 
             var dependencyInjection = new DependencyInjection();
             dependencyInjection.ConfigureServices(services, configurationRoot, "DefaultConnection");
-
-            services.AddScoped<MainWindow>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
             if (ServiceProvider is not null)
             {
-                var loginWindow = ServiceProvider.GetService<MainWindow>();
+                var loginWindow = ServiceProvider.GetService<LoginWindow>();
                 loginWindow?.Show();
             }
         }
