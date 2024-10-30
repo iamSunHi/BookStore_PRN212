@@ -28,6 +28,11 @@ namespace BulkyBook.ServiceManager
 
             #region Windows
             service.AddScoped<MainWindow>();
+            service.AddScoped<LoginWindow>();
+            service.AddScoped<RegisterWindow>();
+            #endregion
+
+            #region Page
             #endregion
         }
     }
