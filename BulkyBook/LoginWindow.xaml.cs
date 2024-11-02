@@ -1,5 +1,7 @@
-﻿using BulkyBook.DataAccess.Repository.IRepository;
+﻿using AutoMapper;
+using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
+using BulkyBook.Models.ViewModels;
 using CredentialManagement;
 using System.Windows;
 using System.Windows.Navigation;
@@ -12,9 +14,11 @@ namespace BulkyBook
     public partial class LoginWindow : Window
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mappers;
 
-        public LoginWindow(IUnitOfWork unitOfWork)
+        public LoginWindow(IUnitOfWork unitOfWork, IMapper mapper)
         {
+            _mappers = mapper;
             _unitOfWork = unitOfWork;
             InitializeComponent();
             LoadSavedCredentials();
@@ -57,11 +61,20 @@ namespace BulkyBook
             if (!isValid)
                 return;
 
-            var userAuthen = _unitOfWork.ApplicationUserRepository.Get(u => u.UserName == username && u.Password == password);
+            var userAuthen = _mappers.Map<ApplicationUserVM>(_unitOfWork.ApplicationUserRepository.Get(u => u.UserName == username && u.Password == password, "Company"));
             if (userAuthen != null)
             {
                 HandleCredentials(userAuthen);
-                MessageBox.Show("Login Successful!");
+                if (userAuthen.Role == "Customer")
+                {
+                    MainWindow mainWindow = new MainWindow(_unitOfWork, userAuthen, _mappers);
+                    mainWindow.Show();
+                }
+                else
+                {
+                    AdminWindow adminWindow = new AdminWindow(_unitOfWork, userAuthen, _mappers);
+                    adminWindow.Show();
+                }
                 this.Close();
             }
             else
@@ -70,7 +83,7 @@ namespace BulkyBook
             }
         }
 
-        private void HandleCredentials(ApplicationUser userAuthen)
+        private void HandleCredentials(ApplicationUserVM userAuthen)
         {
             if (chkRememberMe.IsChecked == true)
             {
@@ -82,7 +95,7 @@ namespace BulkyBook
             }
         }
 
-        private void SaveCredentials(ApplicationUser userAuthen)
+        private void SaveCredentials(ApplicationUserVM userAuthen)
         {
             using (var cred = new Credential())
             {

@@ -1,6 +1,7 @@
 ﻿using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,25 @@ namespace BulkyBook.DataAccess.Repository
 			_context = context;
 		}
 
-		public void Update(Category category)
+        public void DeleteCategory(Category category)
+        {
+            var trackedEntity = _context.Categories.Local.FirstOrDefault(c => c.Id == category.Id);
+            if (trackedEntity != null)
+            {
+                _context.Entry(trackedEntity).State = EntityState.Detached;
+            }
+            _context.Categories.Remove(category);
+        }
+
+
+        public void Update(Category category)
 		{
-			_context.Categories.Update(category);
-		}
+            var trackedEntity = _context.Categories.Local.FirstOrDefault(c => c.Id == category.Id);
+            if (trackedEntity != null)
+            {
+                _context.Entry(trackedEntity).State = EntityState.Detached;
+            }
+            _context.Categories.Update(category);
+        }
 	}
 }

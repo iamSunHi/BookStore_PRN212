@@ -4,6 +4,7 @@ using BulkyBook.DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using BulkyBook.Models.AutoMapper;
 
 namespace BulkyBook.ServiceManager
 {
@@ -13,7 +14,7 @@ namespace BulkyBook.ServiceManager
         {
             service.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString(databaseName));
+                options.UseSqlServer(configuration.GetConnectionString(databaseName)).EnableSensitiveDataLogging();
             });
 
             // Auto update database
@@ -21,6 +22,7 @@ namespace BulkyBook.ServiceManager
             {
                 applicationDbContext?.Database.Migrate();
             }
+            service.AddAutoMapper(typeof(MappingProfile));
 
             #region Repositories
             service.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -30,9 +32,16 @@ namespace BulkyBook.ServiceManager
             service.AddScoped<MainWindow>();
             service.AddScoped<LoginWindow>();
             service.AddScoped<RegisterWindow>();
+            service.AddScoped<AdminWindow>();
             #endregion
 
             #region Page
+            service.AddScoped<UserManagementPage>();
+            service.AddScoped<CategoryManagementPage>();
+            #endregion
+
+            #region UserControl
+            service.AddScoped<CategoryDialog>();
             #endregion
         }
     }
