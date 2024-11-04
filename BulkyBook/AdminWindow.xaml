@@ -18,6 +18,10 @@
                 Click="CategoryManagement_Click"
                 Header="Category Management" />
             <MenuItem
+                Name="productManagementMenuItem"
+                Click="ProductManagement_Click"
+                Header="Product Management" />
+            <MenuItem
                 Name="logoutMenuItem"
                 Click="Logout_Click"
                 Header="Logout" />

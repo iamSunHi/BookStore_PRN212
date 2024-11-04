@@ -79,7 +79,7 @@ namespace BulkyBook
             }
             else
             {
-                MessageBox.Show("Please select a room to delete.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Please select a category to delete.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

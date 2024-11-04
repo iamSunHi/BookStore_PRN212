@@ -4,6 +4,7 @@ using BulkyBook.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BulkyBook.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241104123722_ChangeDefaultData")]
+    partial class ChangeDefaultData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -450,7 +453,7 @@ namespace BulkyBook.DataAccess.Migrations
                             CoverTypeId = 1,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "SWD9999001",
-                            ImageUrl = "d1cc2fbb-658b-4d51-8892-80b4158be721.jpg",
+                            ImageUrl = "https://placehold.co/600x400",
                             Price = 90.0,
                             Title = "Fortune of Time"
                         },
@@ -462,7 +465,7 @@ namespace BulkyBook.DataAccess.Migrations
                             CoverTypeId = 4,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "CAW777777701",
-                            ImageUrl = "42ba0ff9-e11d-46ee-940b-4b15b97d0436.jpg",
+                            ImageUrl = "https://placehold.co/600x400",
                             Price = 30.0,
                             Title = "Dark Skies"
                         },
@@ -474,7 +477,7 @@ namespace BulkyBook.DataAccess.Migrations
                             CoverTypeId = 7,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "RITO5555501",
-                            ImageUrl = "7e929519-0e12-42d7-be48-d8b0cc3c2f2c.jpg",
+                            ImageUrl = "https://placehold.co/600x400",
                             Price = 50.0,
                             Title = "Vanish in the Sunset"
                         },
@@ -486,7 +489,7 @@ namespace BulkyBook.DataAccess.Migrations
                             CoverTypeId = 11,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "WS3333333301",
-                            ImageUrl = "176acaf1-a77d-41e3-a4bf-00b6c591ad29.jpg",
+                            ImageUrl = "https://placehold.co/600x400",
                             Price = 65.0,
                             Title = "Cotton Candy"
                         },
@@ -498,7 +501,7 @@ namespace BulkyBook.DataAccess.Migrations
                             CoverTypeId = 6,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "SOTJ1111111101",
-                            ImageUrl = "1c15ca0b-ac94-4ad3-b21d-d01bc6fdb40f.jpg",
+                            ImageUrl = "https://placehold.co/600x400",
                             Price = 27.0,
                             Title = "Rock in the Ocean"
                         },
@@ -510,7 +513,7 @@ namespace BulkyBook.DataAccess.Migrations
                             CoverTypeId = 2,
                             Description = "Praesent vitae sodales libero. Praesent molestie orci augue, vitae euismod velit sollicitudin ac. Praesent vestibulum facilisis nibh ut ultricies.\r\n\r\nNunc malesuada viverra ipsum sit amet tincidunt. ",
                             ISBN = "FOT000000001",
-                            ImageUrl = "1c09e2e4-ba21-443c-8b7b-ad20f2547063.jpg",
+                            ImageUrl = "https://placehold.co/600x400",
                             Price = 23.0,
                             Title = "Leaves and Wonders"
                         });

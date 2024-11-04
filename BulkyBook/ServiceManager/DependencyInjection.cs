@@ -38,6 +38,7 @@ namespace BulkyBook.ServiceManager
             #region Page
             service.AddScoped<UserManagementPage>();
             service.AddScoped<CategoryManagementPage>();
+            service.AddScoped<ProductManagementPage>();
             #endregion
 
             #region UserControl
