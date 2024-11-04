@@ -1,0 +1,142 @@
+﻿<Page
+    x:Class="BulkyBook.CategoryManagementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BulkyBook"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="CategoryManagementPage"
+    d:DesignHeight="1080"
+    d:DesignWidth="720"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <!--  Define columns with proportional widths for responsiveness  -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="6*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  Background Gradient for the Grid  -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Offset="0" Color="#0099FF" />
+                <GradientStop Offset="0.794" Color="#FF347BDA" />
+                <GradientStop Offset="1" Color="#FF60B1E7" />
+                <GradientStop Offset="0.309" Color="#FF596FDD" />
+                <GradientStop Offset="0.484" Color="#FF472FDE" />
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!--  Define row structure  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--  Header  -->
+        <Label
+            x:Name="lblTitle"
+            Grid.Column="1"
+            Width="Auto"
+            Height="56"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Category Management"
+            FontSize="36" />
+
+        <!--  Search Section  -->
+        <StackPanel
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Margin="0,10,0,10"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBox
+                x:Name="txtSearch"
+                Width="300"
+                Margin="5"
+                VerticalAlignment="Center" />
+            <Button
+                x:Name="btnSearch"
+                Width="100"
+                Margin="5"
+                VerticalAlignment="Center"
+                Background="#FF1B7140"
+                Click="btnSearch_Click"
+                Content="Search"
+                FontWeight="Bold"
+                Foreground="White" />
+        </StackPanel>
+        <!--  DataGrid Section  -->
+        <DataGrid
+            x:Name="dgvCategory"
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            Margin="10"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            HeadersVisibility="All"
+            ItemsSource="{Binding Categories}"
+            MouseDoubleClick="dgvCategory_MouseDoubleClick"
+            SelectionMode="Single"
+            SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" />
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--  Button Section  -->
+        <StackPanel
+            Grid.Row="4"
+            Grid.Column="1"
+            Width="Auto"
+            Margin="0,20,0,20"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="btnLoad"
+                Width="100"
+                Margin="5"
+                Background="#FF1B7140"
+                Click="btnLoad_Click"
+                Content="Load"
+                FontWeight="Bold"
+                Foreground="White" />
+            <Button
+                x:Name="btnInsert"
+                Width="100"
+                Margin="5"
+                Background="#FFA2AA3D"
+                Click="btnInsert_Click"
+                Content="Insert"
+                FontWeight="Bold"
+                Foreground="White" />
+            <Button
+                x:Name="btnDelete"
+                Width="100"
+                Margin="5"
+                Background="#FFEF8F18"
+                Click="btnDelete_Click"
+                Content="Delete"
+                FontWeight="Bold"
+                Foreground="White" />
+            <Button
+                x:Name="btnClose"
+                Width="100"
+                Margin="5"
+                Background="#FFEF8F18"
+                Click="btnClose_Click"
+                Content="Close"
+                FontWeight="Bold"
+                Foreground="White" />
+        </StackPanel>
+
+    </Grid>
+</Page>

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using BulkyBook.DataAccess.Repository.IRepository;
-using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
-using Microsoft.VisualBasic.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,24 +13,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace BulkyBook
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AdminWindow : Window
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly ApplicationUserVM _userAuthen;
         private readonly IMapper _mapper;
-        public MainWindow(IUnitOfWork unitOfWork, ApplicationUserVM userAuthen, IMapper mapper)
+        public AdminWindow(IUnitOfWork unitOfWork, ApplicationUserVM userAuthen, IMapper mapper)
         {
-            _mapper = mapper;
-            _userAuthen = userAuthen;
             _unitOfWork = unitOfWork;
+            _userAuthen = userAuthen;
+            _mapper = mapper;
             InitializeComponent();
         }
 
@@ -39,9 +40,9 @@ namespace BulkyBook
             this.Close();
         }
 
-        private void UserManagement_Click(object sender, RoutedEventArgs e)
+        private void CategoryManagement_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Navigate(new UserManagementPage(_unitOfWork, _userAuthen, _mapper));
+            MainContent.Navigate(new CategoryManagementPage(_unitOfWork, _mapper));
         }
     }
 }
