@@ -1,0 +1,128 @@
+﻿<Page
+    x:Class="BulkyBook.ProductManagementPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BulkyBook"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ProductManagementPage"
+    d:DesignHeight="720"
+    d:DesignWidth="1080"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <DockPanel Margin="10">
+        <StackPanel DockPanel.Dock="Top">
+            <Label
+                x:Name="lblTitle"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="Product Management"
+                FontSize="36"
+                FontWeight="DemiBold"
+                Foreground="White" />
+            <DockPanel>
+                <Label
+                    x:Name="lblSearch"
+                    VerticalAlignment="Center"
+                    Content="Search:"
+                    DockPanel.Dock="Left"
+                    FontSize="16"
+                    FontWeight="Medium"
+                    Foreground="White" />
+                <TextBox
+                    x:Name="txtSearch"
+                    Margin="5"
+                    FontSize="16"
+                    VerticalAlignment="Center"
+                    Foreground="White"
+                    KeyUp="txtSearch_KeyUp" />
+            </DockPanel>
+        </StackPanel>
+
+        <StackPanel
+            Margin="0,20,0,20"
+            HorizontalAlignment="Center"
+            DockPanel.Dock="Bottom"
+            Orientation="Horizontal">
+            <Button
+                x:Name="btnLoad"
+                Width="100"
+                Margin="5"
+                Background="#FF1B7140"
+                Click="btnLoad_Click"
+                Content="Load"
+                FontWeight="Bold"
+                Foreground="White" />
+            <Button
+                x:Name="btnInsert"
+                Width="100"
+                Margin="5"
+                Background="#FFA2AA3D"
+                Click="btnInsert_Click"
+                Content="Insert"
+                FontWeight="Bold"
+                Foreground="White" />
+            <Button
+                x:Name="btnDelete"
+                Width="100"
+                Margin="5"
+                Background="Red"
+                Click="btnDelete_Click"
+                Content="Delete"
+                FontWeight="Bold"
+                Foreground="White" />
+            <Button
+                x:Name="btnClose"
+                Width="100"
+                Margin="5"
+                Background="#FFEF8F18"
+                Click="btnClose_Click"
+                Content="Close"
+                FontWeight="Bold"
+                Foreground="White" />
+        </StackPanel>
+
+        <DataGrid
+            x:Name="dgvProduct"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            HeadersVisibility="All"
+            IsReadOnly="True"
+            ItemsSource="{Binding Categories}"
+            MouseDoubleClick="dgvProduct_MouseDoubleClick"
+            SelectionMode="Single"
+            SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" />
+                <DataGridTextColumn Binding="{Binding Title}" Header="Title" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Description}"
+                    Header="Description">
+                    <!--
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                    -->
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ISBN}" Header="ISBN" />
+                <DataGridTextColumn Binding="{Binding Author}" Header="Author" />
+                <DataGridTextColumn Binding="{Binding Price}" Header="Price" />
+                <DataGridTextColumn Binding="{Binding ImageUrl}" Header="ImageUrl">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                            <Setter Property="TextBlock.TextTrimming" Value="CharacterEllipsis" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Category.Name}" Header="Category" />
+                <DataGridTextColumn Binding="{Binding CoverType.Name}" Header="Cover Type" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Page>
