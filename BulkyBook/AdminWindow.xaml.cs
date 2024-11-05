@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models.ViewModels;
+using BulkyBook.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,11 @@ namespace BulkyBook
             _userAuthen = userAuthen;
             _mapper = mapper;
             InitializeComponent();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            MainContent.Navigate(new ProductManagementPage(_unitOfWork, _mapper));
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

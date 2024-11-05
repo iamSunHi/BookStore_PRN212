@@ -8,19 +8,19 @@
     Title="AdminWindow"
     Width="1080"
     Height="720"
-    mc:Ignorable="d">
+    mc:Ignorable="d" WindowState="Maximized" Initialized="Window_Initialized">
     <DockPanel LastChildFill="True">
 
         <!--  Menu  -->
         <Menu x:Name="mainMenu" DockPanel.Dock="Top">
             <MenuItem
-                Name="categoryManagementMenuItem"
-                Click="CategoryManagement_Click"
-                Header="Category Management" />
-            <MenuItem
                 Name="productManagementMenuItem"
                 Click="ProductManagement_Click"
                 Header="Product Management" />
+            <MenuItem
+                Name="categoryManagementMenuItem"
+                Click="CategoryManagement_Click"
+                Header="Category Management" />
             <MenuItem
                 Name="coverTypeManagementMenuItem"
                 Click="CoverTypeManagement_Click"

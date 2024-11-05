@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace BulkyBook
+namespace BulkyBook.Pages
 {
     /// <summary>
     /// Interaction logic for UserManagementPage.xaml

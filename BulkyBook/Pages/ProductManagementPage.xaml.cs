@@ -17,8 +17,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BulkyBook.Dialogs;
 
-namespace BulkyBook
+namespace BulkyBook.Pages
 {
     /// <summary>
     /// Interaction logic for BookManagementPage.xaml
