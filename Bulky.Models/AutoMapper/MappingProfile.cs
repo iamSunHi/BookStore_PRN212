@@ -15,6 +15,7 @@ namespace BulkyBook.Models.AutoMapper
             CreateMap<ApplicationUserVM, ApplicationUser>().ReverseMap();
             CreateMap<CompanyVM, Company>().ReverseMap();
             CreateMap<CategoryVM, Category>().ReverseMap();
+            CreateMap<CoverTypeVM, CoverType>().ReverseMap();
         }
     }
 }

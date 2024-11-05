@@ -49,5 +49,10 @@ namespace BulkyBook
         {
             MainContent.Navigate(new ProductManagementPage(_unitOfWork, _mapper));
         }
+
+        private void CoverTypeManagement_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Navigate(new CoverTypeManagementPage(_unitOfWork, _mapper));
+        }
     }
 }
