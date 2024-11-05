@@ -2,6 +2,7 @@
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
+using BulkyBook.Pages;
 using Microsoft.VisualBasic.Logging;
 using System.Text;
 using System.Windows;
@@ -32,6 +33,11 @@ namespace BulkyBook
             InitializeComponent();
         }
 
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            MainContent.Navigate(new HomePage(_unitOfWork, _userAuthen, _mapper));
+        }
+
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             LoginWindow loginView = new LoginWindow(_unitOfWork, _mapper);
@@ -42,6 +48,11 @@ namespace BulkyBook
         private void UserManagement_Click(object sender, RoutedEventArgs e)
         {
             MainContent.Navigate(new UserManagementPage(_unitOfWork, _userAuthen, _mapper));
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Navigate(new HomePage(_unitOfWork, _userAuthen, _mapper));
         }
     }
 }

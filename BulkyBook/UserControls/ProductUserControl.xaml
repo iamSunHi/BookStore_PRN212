@@ -1,0 +1,106 @@
+﻿<UserControl
+    x:Class="BulkyBook.UserControls.ProductUserControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:BulkyBook.UserControls"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Margin="0,0,4,8"
+    mc:Ignorable="d">
+    <materialDesign:Card Width="auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="8,24,8,4">
+                <TextBlock
+                    x:Name="txtRoomID"
+                    Height="0"
+                    Text="{Binding Path=Id, Mode=OneWay}"
+                    Visibility="Hidden" />
+                <Image
+                    x:Name="imgDisplay"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Height="200"/>
+                <TextBlock
+                    Margin="0"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"
+                    Text="{Binding Path=Title, Mode=OneWay}"
+                    TextTrimming="WordEllipsis"
+                    TextWrapping="NoWrap" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                    Text="{Binding Path=Description, Mode=OneWay}"
+                    TextTrimming="WordEllipsis"
+                    TextWrapping="NoWrap" />
+                <Separator
+                    Grid.Row="1"
+                    Style="{StaticResource MaterialDesignDarkSeparator}" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                    TextWrapping="Wrap">
+                    <Run Text="ISBN: " />
+                    <Run FontWeight="SemiBold" Text="{Binding Path=ISBN, Mode=OneWay}" />
+                </TextBlock>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                    TextWrapping="Wrap">
+                    <Run Text="Author: " />
+                    <Run FontWeight="SemiBold" Text="{Binding Path=Author, Mode=OneWay}" />
+                </TextBlock>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                    TextWrapping="Wrap">
+                    <Run Text="Price: " />
+                    <Run
+                        x:Name="txtPrice"
+                        FontStyle="Italic"
+                        FontWeight="SemiBold"
+                        Foreground="LimeGreen"
+                        Text="{Binding Path=Price, Mode=OneWay}" />
+                    <Run
+                        FontStyle="Italic"
+                        FontWeight="SemiBold"
+                        Foreground="LimeGreen"
+                        Text="$" />
+                </TextBlock>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                    TextWrapping="Wrap">
+                    <Run Text="Category: " />
+                    <Run FontWeight="SemiBold" Text="{Binding Path=Category.Name, Mode=OneWay}" />
+                </TextBlock>
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource MaterialDesignBody1TextBlock}"
+                    TextWrapping="Wrap">
+                    <Run Text="Cover Type: " />
+                    <Run FontWeight="SemiBold" Text="{Binding Path=CoverType.Name, Mode=OneWay}" />
+                </TextBlock>
+            </StackPanel>
+            <Separator
+                Grid.Row="1"
+                Margin="8,0,8,0"
+                Style="{StaticResource MaterialDesignDarkSeparator}" />
+            <StackPanel Grid.Row="2">
+                <Button
+                    x:Name="btnOrder"
+                    Margin="8,4,8,8"
+                    Click="btnOrder_Click"
+                    Content="ORDER"
+                    Style="{StaticResource MaterialDesignFlatButton}" />
+            </StackPanel>
+        </Grid>
+    </materialDesign:Card>
+</UserControl>

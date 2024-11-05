@@ -1,4 +1,5 @@
-﻿using BulkyBook.Models;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -15,29 +16,37 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BulkyBook
+namespace BulkyBook.Dialogs
 {
     /// <summary>
-    /// Interaction logic for CoverTypeDialog.xaml
+    /// Interaction logic for CategoryDialog.xaml
     /// </summary>
-    public partial class CoverTypeDialog : UserControl
+    public partial class CategoryDialog : UserControl
     {
-        public CoverTypeVM CoverType { get; set; }
+        public CategoryVM Category { get; set; }
 
-        public CoverTypeDialog()
+        public CategoryDialog()
         {
-            CoverType = new CoverTypeVM();
+            Category = new CategoryVM();
             InitializeComponent();
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCoverTypeName.Text))
+            if (string.IsNullOrWhiteSpace(txtCategoryName.Text))
             {
-                MessageBox.Show("CoverType Name is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                txtCoverTypeName.Focus();
+                MessageBox.Show("Category Name is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtCategoryName.Focus();
                 return;
             }
+
+            if (!int.TryParse(txtDisplayOrder.Text, out _))
+            {
+                MessageBox.Show("Display Order must be a valid number.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                txtDisplayOrder.Focus();
+                return;
+            }
+
             (this.Parent as Window).DialogResult = true;
             (this.Parent as Window)?.Close();
         }
@@ -48,7 +57,7 @@ namespace BulkyBook
         }
         public void Load()
         {
-            DataContext = CoverType;
+            DataContext = Category;
         }
 
         private void txtNumber_PreviewTextInput(object sender, TextCompositionEventArgs e)

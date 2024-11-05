@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using BulkyBook.Models.AutoMapper;
+using BulkyBook.Pages;
+using BulkyBook.Dialogs;
 
 namespace BulkyBook.ServiceManager
 {

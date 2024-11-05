@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace BulkyBook
+namespace BulkyBook.Dialogs
 {
     /// <summary>
     /// Interaction logic for ProductDialog.xaml
@@ -51,6 +51,20 @@ namespace BulkyBook
             {
                 MessageBox.Show("Product Price must be a valid number.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 txtPrice.Focus();
+                return;
+            }
+
+            if (Product.Product.Category == null)
+            {
+                MessageBox.Show("Product Category is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                cbCategory.Focus();
+                return;
+            }
+
+            if (Product.Product.CoverType == null)
+            {
+                MessageBox.Show("Product Cover Type is required.", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                cbCoverType.Focus();
                 return;
             }
 

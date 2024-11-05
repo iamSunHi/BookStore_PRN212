@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Dialogs;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
 using System;
@@ -18,7 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BulkyBook
+namespace BulkyBook.Pages
 {
     /// <summary>
     /// Interaction logic for CoverTypeManagementPage.xaml
