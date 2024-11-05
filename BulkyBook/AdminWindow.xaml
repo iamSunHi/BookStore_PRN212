@@ -23,8 +23,8 @@
                 Header="Product Management" />
             <MenuItem
                 Name="coverTypeManagementMenuItem"
-                Click="coverTypeManagement_Click"
-                Header="CoverType Management" />
+                Click="CoverTypeManagement_Click"
+                Header="Cover Type Management" />
             <MenuItem
                 Name="logoutMenuItem"
                 Click="Logout_Click"

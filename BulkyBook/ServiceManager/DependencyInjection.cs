@@ -44,6 +44,7 @@ namespace BulkyBook.ServiceManager
 
             #region UserControl
             service.AddScoped<CategoryDialog>();
+            service.AddScoped<ProductDialog>();
             service.AddScoped<CoverTypeDialog>();
             #endregion
         }
