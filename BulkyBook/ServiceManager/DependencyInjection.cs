@@ -38,10 +38,12 @@ namespace BulkyBook.ServiceManager
             #region Page
             service.AddScoped<UserManagementPage>();
             service.AddScoped<CategoryManagementPage>();
+            service.AddScoped<CoverTypeManagementPage>();
             #endregion
 
             #region UserControl
             service.AddScoped<CategoryDialog>();
+            service.AddScoped<CoverTypeDialog>();
             #endregion
         }
     }

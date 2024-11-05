@@ -18,6 +18,10 @@
                 Click="CategoryManagement_Click"
                 Header="Category Management" />
             <MenuItem
+                Name="coverTypeManagementMenuItem"
+                Click="coverTypeManagement_Click"
+                Header="CoverType Management" />
+            <MenuItem
                 Name="logoutMenuItem"
                 Click="Logout_Click"
                 Header="Logout" />
@@ -25,6 +29,11 @@
 
         <!--  Main Content Area  -->
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="66*" />
+                <ColumnDefinition Width="23*" />
+                <ColumnDefinition Width="181*" />
+            </Grid.ColumnDefinitions>
             <!--  Background similar to CartView  -->
             <Grid.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
@@ -39,7 +48,8 @@
             <!--  Frame to hold views  -->
             <Frame
                 x:Name="MainContent"
-                Margin="10"
+                Grid.ColumnSpan="3"
+                Margin="10,10,10,10"
                 NavigationUIVisibility="Hidden" />
         </Grid>
     </DockPanel>
