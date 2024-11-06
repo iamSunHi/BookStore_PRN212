@@ -100,6 +100,12 @@
                     Click="btnOrder_Click"
                     Content="ORDER"
                     Style="{StaticResource MaterialDesignFlatButton}" />
+                <Button
+                    x:Name="btnDetail"
+                    Margin="8,4,8,8"
+                    Click="btnDetail_Click"
+                    Content="Detail"
+                    Style="{StaticResource MaterialDesignFlatButton}" />
             </StackPanel>
         </Grid>
     </materialDesign:Card>

@@ -8,18 +8,73 @@
     Title="HomePage"
     d:DesignHeight="720"
     d:DesignWidth="1080"
-    mc:Ignorable="d" Loaded="Page_Loaded">
+    mc:Ignorable="d" 
+    Loaded="Page_Loaded">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Grid
-        x:Name="ContainerProduct"
-        ScrollViewer.VerticalScrollBarVisibility="Auto">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="82"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="10" HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="150*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="150*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="75*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="75*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="150*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="150*"/>
+
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Title:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.Column="0"/>
+            <TextBox x:Name="TitleTextBox" Width="150" Margin="0,0,10,0" Height="41" Grid.Column="1"/>
+
+            <TextBlock Text="Author:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.Column="2"/>
+            <TextBox x:Name="AuthorTextBox" Width="150" Margin="0,0,10,0" Height="41" Grid.Column="3"/>
+
+            <TextBlock Text="Price Min:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.Column="4"/>
+            <TextBox x:Name="PriceMinTextBox" Width="75" Height="41" Margin="0,0,10,0" Grid.Column="5"/>
+
+            <TextBlock Text="Price Max:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.Column="6"/>
+            <TextBox x:Name="PriceMaxTextBox" Width="75" Height="41" Margin="0,0,10,0" Grid.Column="7"/>
+
+            <TextBlock Text="Category:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.Column="8"/>
+            <ComboBox x:Name="CategoryComboBox" Width="150" Margin="0,0,10,0" Height="41" 
+              DisplayMemberPath="Name" SelectedValuePath="Id" Grid.Column="9"/>
+
+            <TextBlock Text="Cover Type:" VerticalAlignment="Center" Margin="0,0,5,0" Grid.Column="10"/>
+            <ComboBox x:Name="CoverTypeComboBox" Width="150" Margin="0,0,10,0" Height="41"
+              DisplayMemberPath="Name" SelectedValuePath="Id" Grid.Column="11"/>
+
+            <Button Content="Filter" Width="100" Grid.Column="12" Click="filter_Click"/>
         </Grid>
-    </ScrollViewer>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="10,10,10,10">
+            <Grid 
+                x:Name="ContainerProduct"
+                Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+        </ScrollViewer>
+    </Grid>
 </Page>

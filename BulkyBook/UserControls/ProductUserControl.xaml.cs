@@ -1,7 +1,13 @@
-﻿using BulkyBook.Models;
+﻿using AutoMapper;
+using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Dialogs;
+using BulkyBook.Models;
+using BulkyBook.Models.ViewModels;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.VisualStyles;
 
 namespace BulkyBook.UserControls
 {
@@ -10,14 +16,36 @@ namespace BulkyBook.UserControls
     /// </summary>
     public partial class ProductUserControl : UserControl
     {
-        public ProductUserControl()
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ApplicationUserVM _userAuthen;
+        private readonly IMapper _mapper;
+
+        public ProductUserControl(IUnitOfWork unitOfWork, ApplicationUserVM userAuthen, IMapper mapper)
         {
+            _mapper = mapper;
+            _userAuthen = userAuthen;
+            _unitOfWork = unitOfWork;
             InitializeComponent();
         }
 
         private void btnOrder_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Ordering is not supported yet!");
+        }
+
+        private void btnDetail_Click(object sender, RoutedEventArgs e)
+        {
+            int productId = int.Parse(txtRoomID.Text);
+            var product = _unitOfWork.ProductRepository.Get(p => p.Id == productId, includeProperties: "Category,CoverType");
+            var detailDialog = new Window
+            {
+                Title = "Product Details",
+                Content = new UserProductDialog(product),
+                SizeToContent = SizeToContent.WidthAndHeight,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            detailDialog.ShowDialog(); // Hiển thị cửa sổ
+
         }
 
         //public Product Product
