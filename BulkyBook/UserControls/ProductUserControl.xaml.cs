@@ -1,4 +1,8 @@
-﻿using BulkyBook.Models;
+﻿using AutoMapper;
+using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Dialogs;
+using BulkyBook.Models;
+using BulkyBook.Models.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,15 +14,34 @@ namespace BulkyBook.UserControls
     /// </summary>
     public partial class ProductUserControl : UserControl
     {
-        public ProductUserControl()
-        {
-            InitializeComponent();
-        }
+		private readonly IUnitOfWork _unitOfWork;
+		private readonly ApplicationUserVM _userAuthen;
+		private readonly IMapper _mapper;
+		public ProductUserControl(IUnitOfWork unitOfWork, ApplicationUserVM userAuthen, IMapper mapper)
+		{
+			_mapper = mapper;
+			_userAuthen = userAuthen;
+			_unitOfWork = unitOfWork;
+			InitializeComponent();
+		}
 
-        private void btnOrder_Click(object sender, RoutedEventArgs e)
+		private void btnOrder_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ordering is not supported yet!");
-        }
+			var product = DataContext as Product;
+
+			if (product != null)
+			{
+				var inputQuantityWindow = new InputQuantityDialog(_unitOfWork, _userAuthen, _mapper, product);
+				if (inputQuantityWindow.ShowDialog() == true)
+				{
+					int quantity = inputQuantityWindow.Quantity;
+				}
+			}
+			else
+			{
+				MessageBox.Show("Không thể lấy thông tin sản phẩm.");
+			}
+		}
 
         //public Product Product
         //{

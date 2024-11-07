@@ -9,6 +9,7 @@
     Title="Home"
     Width="1080"
     Height="720"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d" Initialized="Window_Initialized" WindowState="Maximized">
 
     <DockPanel LastChildFill="True">
@@ -19,6 +20,7 @@
                 DockPanel.Dock="Right"
                 Orientation="Horizontal">
                 <Menu x:Name="mainMenu" Cursor="Hand">
+
                     <MenuItem
                         Name="homeMenuItem"
                         Click="Home_Click"
@@ -27,6 +29,10 @@
                         Name="userManagementMenuItem"
                         Click="UserManagement_Click"
                         Header="Profile" />
+                    <MenuItem
+                        Name="cartButton"
+                        Click="CartButton_Click"
+                        Header="Order" />
                     <Button
                         Name="logoutMenuItem"
                         Margin="0,0,8,0"

@@ -1,0 +1,20 @@
+﻿<Page x:Class="BulkyBook.Dialogs.OrderCustomer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BulkyBook.Dialogs"
+        mc:Ignorable="d"
+        Title="OrderCustomer" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" Margin="10" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Product Name" Binding="{Binding Product.Title}" />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Count}" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Product.Price}" />
+                <DataGridTextColumn Header="Total" Binding="{Binding OrderHeader.OrderTotal}" />
+                <DataGridTextColumn Header="Total" Binding="{Binding OrderHeader.OrderDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

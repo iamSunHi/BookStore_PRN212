@@ -56,7 +56,7 @@ namespace BulkyBook.Pages
 
             foreach (var product in productList)
             {
-                var productUC = new ProductUserControl();
+                var productUC = new ProductUserControl(_unitOfWork, _userAuthen, _mapper);
 
                 productUC.DataContext = product;
                 if (!string.IsNullOrEmpty(product.ImageUrl))
