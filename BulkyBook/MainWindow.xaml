@@ -27,6 +27,11 @@
                         Name="userManagementMenuItem"
                         Click="UserManagement_Click"
                         Header="Profile" />
+                    <MenuItem
+                        Name="userCategoriesMenuItem"
+                        
+                        Header="Categories" Click="UserCategories_Click" />      
+
                     <Button
                         Name="logoutMenuItem"
                         Margin="0,0,8,0"

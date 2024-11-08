@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BulkyBook.DataAccess.Repository;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
@@ -43,7 +44,28 @@ namespace BulkyBook.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             var productList = _unitOfWork.ProductRepository.GetAll(includeProperties: "Category,CoverType");
+            LoadDataCategoryAndCoverType();
             LoadDataToDataGrid(new ObservableCollection<Product>(productList.Take(16)));
+        }
+
+        public void LoadDataCategoryAndCoverType()
+        {
+
+            var categories = _unitOfWork.CategoryRepository.GetAll().ToList(); 
+
+            categories.Insert(0, new Category { Id = 0, Name = "None" });
+
+            CategoryComboBox.ItemsSource = categories;
+            CategoryComboBox.DisplayMemberPath = "Name";
+            CategoryComboBox.SelectedValuePath = "Id";
+
+            var coverTypes = _unitOfWork.CoverTypeRepository.GetAll().ToList(); 
+
+            coverTypes.Insert(0, new CoverType { Id = 0, Name = "None" });
+
+            CoverTypeComboBox.ItemsSource = coverTypes;
+            CoverTypeComboBox.DisplayMemberPath = "Name";
+            CoverTypeComboBox.SelectedValuePath = "Id";
         }
 
         private void LoadDataToDataGrid(ObservableCollection<Product> productList)
@@ -56,7 +78,7 @@ namespace BulkyBook.Pages
 
             foreach (var product in productList)
             {
-                var productUC = new ProductUserControl();
+                var productUC = new ProductUserControl(_unitOfWork,_userAuthen,_mapper);
 
                 productUC.DataContext = product;
                 if (!string.IsNullOrEmpty(product.ImageUrl))
@@ -84,6 +106,39 @@ namespace BulkyBook.Pages
                     row++;
                 }
             }
+        }
+
+        private void filter_Click(object sender, RoutedEventArgs e)
+        {
+            string title = TitleTextBox.Text;
+            string author = AuthorTextBox.Text;
+
+            double.TryParse(PriceMinTextBox.Text, out double priceMin);
+            double.TryParse(PriceMaxTextBox.Text, out double priceMax);
+
+            int? selectedCategoryId = CategoryComboBox.SelectedValue as int?;
+            int? selectedCoverTypeId = CoverTypeComboBox.SelectedValue as int?;
+
+            var filteredProducts = _unitOfWork.ProductRepository.GetAll(includeProperties: "Category,CoverType");
+
+            if (!string.IsNullOrWhiteSpace(title))
+                filteredProducts = filteredProducts.Where(p => p.Title.Contains(title, StringComparison.OrdinalIgnoreCase));
+
+            if (!string.IsNullOrWhiteSpace(author))
+                filteredProducts = filteredProducts.Where(p => p.Author.Contains(author, StringComparison.OrdinalIgnoreCase));
+
+            if (priceMin > 0)
+                filteredProducts = filteredProducts.Where(p => p.Price >= priceMin);
+
+            if (priceMax > 0)
+                filteredProducts = filteredProducts.Where(p => p.Price <= priceMax);
+
+            if (selectedCategoryId.HasValue && selectedCategoryId.Value!=0)
+                filteredProducts = filteredProducts.Where(p => p.CategoryId == selectedCategoryId.Value);
+
+            if (selectedCoverTypeId.HasValue && selectedCoverTypeId.Value!=0)
+                filteredProducts = filteredProducts.Where(p => p.CoverTypeId == selectedCoverTypeId.Value);
+            LoadDataToDataGrid(new ObservableCollection<Product>(filteredProducts));
         }
     }
 }
