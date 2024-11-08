@@ -26,16 +26,16 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Content="Product Title:" />
-        <TextBox x:Name="txtProductTitle" Grid.Row="1" Grid.Column="1" Margin="5,0" Text="{Binding Title}" />
+        <TextBox x:Name="txtProductTitle" Grid.Row="1" Grid.Column="1" Margin="5,0" Text="{Binding Title}" IsReadOnly="True" />
 
         <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Content="Description:" />
-        <TextBox x:Name="txtDescription" Grid.Row="2" Grid.Column="1" Margin="5,0" Text="{Binding Description}" />
+        <TextBox x:Name="txtDescription" Grid.Row="2" Grid.Column="1" Margin="5,0" Text="{Binding Description}" IsReadOnly="True"/>
 
         <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="ISBN:" />
-        <TextBox x:Name="txtISBN" Grid.Row="3" Grid.Column="1" Margin="5,0" Text="{Binding ISBN}" />
+        <TextBox x:Name="txtISBN" Grid.Row="3" Grid.Column="1" Margin="5,0" Text="{Binding ISBN}" IsReadOnly="True"/>
 
         <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Content="Author:" />
-        <TextBox x:Name="txtAuthor" Grid.Row="4" Grid.Column="1" Margin="5,0" Text="{Binding Author}" />
+        <TextBox x:Name="txtAuthor" Grid.Row="4" Grid.Column="1" Margin="5,0" Text="{Binding Author}" IsReadOnly="True"/>
 
         <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Content="Image:" />
         <DockPanel Grid.Row="5" Grid.Column="1" Margin="5">
@@ -43,13 +43,13 @@
         </DockPanel>
 
         <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" Content="Price:" />
-        <TextBox x:Name="txtPrice" Grid.Row="6" Grid.Column="1" Margin="5,0" Text="{Binding Price}" />
+        <TextBox x:Name="txtPrice" Grid.Row="6" Grid.Column="1" Margin="5,0" Text="{Binding Price}" IsReadOnly="True"/>
 
         <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" Content="Category:" />
-        <TextBox x:Name="txtCategory" Grid.Row="7" Grid.Column="1" Margin="5,0" Text="{Binding Category.Name}" />
+        <TextBox x:Name="txtCategory" Grid.Row="7" Grid.Column="1" Margin="5,0" Text="{Binding Category.Name}" IsReadOnly="True"/>
 
         <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" Content="CoverType:" />
-        <TextBox x:Name="txtCoverType" Grid.Row="8" Grid.Column="1" Margin="5,0" Text="{Binding CoverType.Name}" />
+        <TextBox x:Name="txtCoverType" Grid.Row="8" Grid.Column="1" Margin="5,0" Text="{Binding CoverType.Name}" IsReadOnly="True"/>
 
         <!--  Buttons  -->
         <StackPanel Grid.Row="9" Grid.Column="1" Margin="0,10,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
