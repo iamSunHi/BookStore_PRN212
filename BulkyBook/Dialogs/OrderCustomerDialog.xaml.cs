@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
 
 namespace BulkyBook.Dialogs
@@ -34,22 +35,30 @@ namespace BulkyBook.Dialogs
 
 		private void LoadOrder()
 		{
-			var orderHeader = _unitOfWork.OrderHeaderRepository
-				.Get(u => u.ApplicationUserId == _userAuthen.Id);
-			if (orderHeader != null)
+			var orderHeaders = _unitOfWork.OrderHeaderRepository
+				.GetAll(u => u.ApplicationUserId == _userAuthen.Id);
+
+			if (orderHeaders != null && orderHeaders.Any())
 			{
-				var orderDetail = _unitOfWork.OrderDetailRepository
-					.GetAll(u => u.OrderHeaderId == orderHeader.Id, includeProperties: "Product,OrderHeader")
-					.ToList();
-				if (orderDetail != null)
+				var allOrderDetails = new List<OrderDetail>();
+				foreach (var order in orderHeaders)
 				{
-					dataGrid.ItemsSource = orderDetail;
+					var orderDetails = _unitOfWork.OrderDetailRepository
+						.GetAll(u => u.OrderHeaderId == order.Id, includeProperties: "Product,OrderHeader")
+						.ToList();
+
+					if (orderDetails != null)
+					{
+						allOrderDetails.AddRange(orderDetails);
+					}
 				}
+				dataGrid.ItemsSource = allOrderDetails;
 			}
 			else
 			{
 				MessageBox.Show("You do not have any order yet");
 			}
 		}
+
 	}
 }

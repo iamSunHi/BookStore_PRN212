@@ -41,7 +41,7 @@ namespace BulkyBook.UserControls
 			}
 			else
 			{
-				MessageBox.Show("Không thể lấy thông tin sản phẩm.");
+				MessageBox.Show("Can not get product information.");
 			}
 		}
 

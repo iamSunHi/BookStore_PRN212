@@ -60,7 +60,7 @@ namespace BulkyBook.Dialogs
 			}
 			else
 			{
-				MessageBox.Show("Vui lòng nhập số lượng hợp lệ.");
+				MessageBox.Show("Enter quantity again.");
 			}
 		}
 
