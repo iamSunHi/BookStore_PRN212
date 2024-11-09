@@ -3,9 +3,11 @@ using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Dialogs;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.VisualStyles;
 
 namespace BulkyBook.UserControls
 {
@@ -42,6 +44,21 @@ namespace BulkyBook.UserControls
 				MessageBox.Show("Không thể lấy thông tin sản phẩm.");
 			}
 		}
+
+        private void btnDetail_Click(object sender, RoutedEventArgs e)
+        {
+            int productId = int.Parse(txtRoomID.Text);
+            var product = _unitOfWork.ProductRepository.Get(p => p.Id == productId, includeProperties: "Category,CoverType");
+            var detailDialog = new Window
+            {
+                Title = "Product Details",
+                Content = new UserProductDialog(product),
+                SizeToContent = SizeToContent.WidthAndHeight,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            detailDialog.ShowDialog(); // Hiển thị cửa sổ
+
+        }
 
         //public Product Product
         //{

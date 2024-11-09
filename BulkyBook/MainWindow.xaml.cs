@@ -56,6 +56,11 @@ namespace BulkyBook
             MainContent.Navigate(new HomePage(_unitOfWork, _userAuthen, _mapper));
         }
 
+        private void UserCategories_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Navigate(new UserCategoriesPage(_unitOfWork, _userAuthen,_mapper));
+        }
+
 		private void CartButton_Click(object sender, RoutedEventArgs e)
 		{
 			MainContent.Navigate(new OrderCustomer(_unitOfWork, _userAuthen));

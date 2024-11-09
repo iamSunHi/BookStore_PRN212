@@ -30,6 +30,11 @@
                         Click="UserManagement_Click"
                         Header="Profile" />
                     <MenuItem
+                        Name="userCategoriesMenuItem"
+                        
+                        Header="Categories" Click="UserCategories_Click" />      
+
+                    <MenuItem
                         Name="cartButton"
                         Click="CartButton_Click"
                         Header="Order" />
