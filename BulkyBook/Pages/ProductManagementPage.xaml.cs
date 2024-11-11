@@ -127,7 +127,8 @@ namespace BulkyBook.Pages
                     Title = "Update Product",
                     Content = dialog,
                     SizeToContent = SizeToContent.WidthAndHeight,
-                    WindowStartupLocation = WindowStartupLocation.CenterScreen
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    ResizeMode = ResizeMode.NoResize
                 };
                 dialog.Load();
                 if (window.ShowDialog() == true)

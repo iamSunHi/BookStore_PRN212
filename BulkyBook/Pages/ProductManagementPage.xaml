@@ -92,7 +92,6 @@
             CanUserAddRows="False"
             HeadersVisibility="All"
             IsReadOnly="True"
-            ItemsSource="{Binding Categories}"
             MouseDoubleClick="dgvProduct_MouseDoubleClick"
             SelectionMode="Single"
             SelectionUnit="FullRow">
