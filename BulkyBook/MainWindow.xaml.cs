@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BulkyBook.DataAccess.Repository.IRepository;
+using BulkyBook.Dialogs;
 using BulkyBook.Models;
 using BulkyBook.Models.ViewModels;
 using BulkyBook.Pages;
@@ -59,5 +60,10 @@ namespace BulkyBook
         {
             MainContent.Navigate(new UserCategoriesPage(_unitOfWork, _userAuthen,_mapper));
         }
+
+		private void CartButton_Click(object sender, RoutedEventArgs e)
+		{
+			MainContent.Navigate(new OrderCustomer(_unitOfWork, _userAuthen));
+		}
     }
 }
