@@ -26,6 +26,10 @@
                 Click="CoverTypeManagement_Click"
                 Header="Cover Type Management" />
             <MenuItem
+                Name="orderManagementMenuItem"
+                Click="OrderManagement_Click"
+                Header="Order Management" />
+            <MenuItem
                 Name="logoutMenuItem"
                 Click="Logout_Click"
                 Header="Logout" />
