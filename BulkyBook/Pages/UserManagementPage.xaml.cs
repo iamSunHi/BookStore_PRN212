@@ -5,6 +5,7 @@ using BulkyBook.Models.ViewModels;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -58,6 +59,11 @@ namespace BulkyBook.Pages
             {
                 _userProfile.Password = pwdPassword.Password;
             }
+            if (!string.IsNullOrEmpty(_userProfile.Email) && !ValidateEmail(_userProfile.Email))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             _userProfile.Company = null;
             _unitOfWork.ApplicationUserRepository.Update(_mapper.Map<ApplicationUser>(_userProfile));
             _unitOfWork.Save();
@@ -69,12 +75,14 @@ namespace BulkyBook.Pages
         private void SetTextBoxesEnabled(bool isEnabled)
         {
             pwdPassword.IsEnabled = isEnabled;
+            txtEmail.IsEnabled = isEnabled;
             txtName.IsEnabled = isEnabled;
             txtAddress.IsEnabled = isEnabled;
             txtCity.IsEnabled = isEnabled;
             txtState.IsEnabled = isEnabled;
             txtPostalCode.IsEnabled = isEnabled;
             cboCompany.IsEnabled = isEnabled;
+            pwdPassword.Clear();
         }
 
         private void LoadUserProfile()
@@ -87,6 +95,17 @@ namespace BulkyBook.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             LoadUserProfile();
+        }
+        public bool ValidateEmail(string email)
+        {
+            // Regular expression for validating an email
+            string emailPattern = @"^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$";
+
+            // Create a regex object
+            Regex regex = new Regex(emailPattern);
+
+            // Return whether the email matches the pattern
+            return regex.IsMatch(email);
         }
     }
 }
