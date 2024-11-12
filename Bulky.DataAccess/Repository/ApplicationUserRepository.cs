@@ -1,6 +1,7 @@
 ﻿using BulkyBook.DataAccess.Data;
 using BulkyBook.DataAccess.Repository.IRepository;
 using BulkyBook.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBook.DataAccess.Repository
 {
@@ -15,7 +16,12 @@ namespace BulkyBook.DataAccess.Repository
 
         public void Update(ApplicationUser applicationUser)
         {
-            _context.ApplicationUsers.Update(applicationUser);
+                var trackedEntity = _context.ApplicationUsers.Local.FirstOrDefault(c => c.Id == applicationUser.Id);
+                if (trackedEntity != null)
+                {
+                    _context.Entry(trackedEntity).State = EntityState.Detached;
+                }
+                _context.ApplicationUsers.Update(applicationUser);
         }
     }
 }
