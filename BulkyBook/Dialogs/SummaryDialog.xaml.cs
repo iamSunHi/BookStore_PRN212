@@ -121,6 +121,12 @@ namespace BulkyBook.Dialogs
 				return false;
 			}
 
+			if (string.IsNullOrWhiteSpace(txtPhone.Text))
+			{
+				MessageBox.Show("Please enter a phone number.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+				return false;
+			}
+
 			if (string.IsNullOrWhiteSpace(OrderHeader.StreetAddress))
 			{
 				MessageBox.Show("Please enter a street address.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -133,15 +139,15 @@ namespace BulkyBook.Dialogs
 				return false;
 			}
 
-			if (string.IsNullOrWhiteSpace(OrderHeader.PostalCode))
+			if (string.IsNullOrWhiteSpace(OrderHeader.State))
 			{
-				MessageBox.Show("Please enter a postal code.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Please enter state.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 				return false;
 			}
 
-			if (string.IsNullOrWhiteSpace(txtPhone.Text))
+			if (string.IsNullOrWhiteSpace(OrderHeader.PostalCode))
 			{
-				MessageBox.Show("Please enter a phone number.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+				MessageBox.Show("Please enter a postal code.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
 				return false;
 			}
 			return true;

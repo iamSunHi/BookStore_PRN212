@@ -44,8 +44,20 @@ namespace BulkyBook.Dialogs
 
 		private void Confirm_Click(object sender, RoutedEventArgs e)
 		{
-			if (int.TryParse(txtQuantity.Text, out int quantity) && quantity > 0)
+			if (string.IsNullOrWhiteSpace(txtQuantity.Text))
 			{
+				MessageBox.Show("Quantity cannot be empty.");
+				return;
+			}
+
+			if (int.TryParse(txtQuantity.Text, out int quantity))
+			{
+				if (quantity <= 0)
+				{
+					MessageBox.Show("Quantity must be greater than zero.");
+					return;
+				}
+
 				Quantity = quantity;
 				DialogResult = true;
 
@@ -60,7 +72,7 @@ namespace BulkyBook.Dialogs
 			}
 			else
 			{
-				MessageBox.Show("Enter quantity again.");
+				MessageBox.Show("Enter a valid quantity.");
 			}
 		}
 

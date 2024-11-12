@@ -13,7 +13,7 @@
                 <DataGridTextColumn Header="Quantity" Binding="{Binding Count}" />
                 <DataGridTextColumn Header="Price" Binding="{Binding Product.Price}" />
                 <DataGridTextColumn Header="Total" Binding="{Binding OrderHeader.OrderTotal}" />
-                <DataGridTextColumn Header="Total" Binding="{Binding OrderHeader.OrderDate}" />
+                <DataGridTextColumn Header="Order Date" Binding="{Binding OrderHeader.OrderDate}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
