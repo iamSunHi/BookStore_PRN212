@@ -11,7 +11,7 @@
       d:DesignWidth="1080"
       Title="UserCategoriesPage" Loaded="Page_Loaed">
 
-    <Grid Background="White">
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="147*"/>
             <RowDefinition Height="202*"/>
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
 
-        <TextBox Margin="42,52,0,0" TextWrapping="Wrap" Text="Category List" VerticalAlignment="Top" Height="72" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Width="172">
+        <TextBox Margin="42,52,0,0" TextWrapping="Wrap" Text="Category List" VerticalAlignment="Top" Height="72" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" Width="172" IsReadOnly="True">
             <TextBox.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF120C0C" Offset="0.319"/>
